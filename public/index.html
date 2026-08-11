@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>섯다 온라인 칩</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 로그인 화면 -->
+    <div id="login-screen" class="screen active">
+        <h1>섯다 배팅 시스템</h1>
+        <input type="text" id="nickname" placeholder="닉네임을 입력하세요">
+        <div class="buttons">
+            <button id="btn-host">호스트(방장)로 생성</button>
+            <button id="btn-guest">게스트로 참가</button>
+        </div>
+    </div>
+
+    <!-- 호스트 화면 -->
+    <div id="host-screen" class="screen">
+        <h2>호스트 대시보드</h2>
+        <div class="pot-display">
+            현재 팟(판돈): <span id="host-pot">0</span> 칩
+        </div>
+        <div class="controls">
+            <button id="btn-recruit">참가 모집 시작 (팝업)</button>
+            <button id="btn-start-bet">배팅 턴 시작</button>
+        </div>
+        
+        <h3>접속자 명단 (승자 선택)</h3>
+        <ul id="host-player-list"></ul>
+    </div>
+
+    <!-- 게스트 화면 -->
+    <div id="guest-screen" class="screen">
+        <h2 id="guest-greeting"></h2>
+        <div class="pot-display">
+            현재 팟(판돈): <span id="guest-pot">0</span> 칩
+        </div>
+
+        <div id="waiting-msg" class="message">호스트를 기다리는 중입니다...</div>
+        
+        <div id="betting-ui" class="hidden">
+            <h3>내 턴입니다! 배팅하세요</h3>
+            <div class="bet-buttons">
+                <button onclick="bet('bbing')">삥</button>
+                <button onclick="bet('call')">콜</button>
+                <button onclick="bet('ddadang')">따당</button>
+                <button onclick="bet('half')">하프</button>
+                <button onclick="bet('die')" class="die">다이</button>
+            </div>
+        </div>
+        
+        <h3>플레이어 상태</h3>
+        <ul id="guest-player-list"></ul>
+    </div>
+
+    <!-- 참가 팝업 -->
+    <div id="participate-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>새로운 판이 시작됩니다!</h3>
+            <p>기본금 <span id="ante-amount"></span> 칩을 내고 참가하시겠습니까?</p>
+            <button id="btn-participate">참가하기</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
