@@ -1,0 +1,13 @@
+{
+  "name": "seotda-chip",
+  "version": "1.0.0",
+  "description": "섯다 온라인 칩 시스템",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}
